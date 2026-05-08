@@ -1,0 +1,31 @@
+Harry Potter e a Pedra Filosofal|J.K Rowling|1997
+Harry Potter e a Câmara Secreta|J.K Rowling|1998
+O Hobbit|Tolkien|1937
+O Senhor dos Anéis|Tolkien|1954
+Dom Casmurro|Machado de Assis|1899
+Memórias Póstumas de Brás Cubas|Machado de Assis|1881
+Clean Code|Robert C. Martin|2008
+Clean Architecture|Robert C. Martin|2017
+Python Crash Course|Eric Matthes|2015
+Automate the Boring Stuff|Al Sweigart|2015
+The Pragmatic Programmer|Andrew Hunt|1999
+Design Patterns|Erich Gamma|1994
+Refactoring|Martin Fowler|1999
+Código Limpo|Robert C. Martin|2009
+Algoritmos|Thomas H. Cormen|2009
+Estruturas de Dados|Narasimha Karumanchi|2011
+Redes de Computadores|Andrew S. Tanenbaum|2010
+Sistemas Operacionais|Andrew S. Tanenbaum|2015
+Engenharia de Software|Ian Sommerville|2011
+Introdução à Programação|Deitel|2012
+Java: Como Programar|Deitel|2016
+C Programming Language|Kernighan|1988
+Artificial Intelligence|Stuart Russell|2010
+Deep Learning|Ian Goodfellow|2016
+Banco de Dados|Elmasri|2015
+Compiladores|Aho|2006
+Computer Organization|Patterson|2013
+Digital Design|Morris Mano|2012
+Data Science Handbook|Jake VanderPlas|2016
+Fluent Python|Luciano Ramalho|2015
+dsadas|adasads|1111
