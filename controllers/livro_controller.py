@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from use_cases.livro_use_cases import LivroUseCases
-from infra.txt_livro_repository import TxtLivroRepository
+from usecases.livro_use_cases import LivroUseCases
+from infrastructure.txt_livro_repository import TxtLivroRepository
 
 livro_bp = Blueprint('livro', __name__)
 usecases = LivroUseCases(TxtLivroRepository())

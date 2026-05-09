@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
-from interface.livro_controller import livro_bp
+from controllers.livro_controller import livro_bp
 import os
 
 app = Flask(__name__)
