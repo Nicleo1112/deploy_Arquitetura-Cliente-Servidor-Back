@@ -1,11 +1,20 @@
-# API Livraria - Back-end (Exercício 8.3)
+# API Livraria - Back-end (Exercício 8.4)
 
 Este repositório contém a API Back-end do sistema de livraria, desenvolvida em Python com Flask.
-O projeto foi refatorado para implementar a Arquitetura Cliente-Servidor, separando completamente
-as responsabilidades da Interface (Front-end) das regras de negócio e persistência de dados (Back-end).
+O projeto implementa a Arquitetura Cliente-Servidor, separando completamente as responsabilidades
+da Interface (Front-end) das regras de negócio e persistência de dados (Back-end).
 
 > **Aviso:** Este é apenas o repositório do Back-end. O Cliente (Front-end independente construído
-> com HTML) deve ser executado separadamente para consumir esta API.
+> com HTML/JS) está em um repositório separado e deve ser acessado pelo link abaixo.
+
+---
+
+## Links
+
+| | URL |
+|---|---|
+| 🌐 Front-end | https://nicleo1112.github.io/Arquitetura-Cliente-Servidor-Front-end |
+| ⚙️ Back-end | https://livraria-api-btc4e6eucreuctae.eastus-01.azurewebsites.net |
 
 ---
 
@@ -13,7 +22,7 @@ as responsabilidades da Interface (Front-end) das regras de negócio e persistê
 
 - **Python 3.11**
 - **Flask:** Microframework para criação da API REST.
-- **Flask-CORS:** Biblioteca utilizada para permitir as requisições (Cross-Origin) vindas do Front-end independente.
+- **Flask-CORS:** Permite requisições Cross-Origin vindas do Front-end independente.
 - **Manipulação de TXT:** Persistência de dados utilizando arquivos de texto para simular um banco de dados.
 - A API retorna exclusivamente dados em formato **JSON**.
 
@@ -51,84 +60,61 @@ Exemplo: `GET /api/livros?titulo=Harry&ano_min=1990&ano_max=2000`
 
 ---
 
-## Como executar localmente
+## Função de Teste
 
-### Pré-requisitos
-
-- Python 3.11+
-- pip
-
-### Instalação
+O arquivo `test_api.py` testa todas as rotas da API em produção. Para executar:
 
 ```bash
-# Clone o repositório
-git clone https://github.com/Nicleo1112/Arquitetura-Cliente-Servidor-Back.git
-cd Arquitetura-Cliente-Servidor-Back
-
-# Instale as dependências
-pip install -r requirements.txt
+python test_api.py
 ```
 
-### Rodando localmente
-
-```bash
-python app.py
-```
-
-API disponível em: `http://127.0.0.1:5000`
-
-> Na primeira execução, o arquivo `livros.txt` é criado automaticamente com 30 livros pré-cadastrados.
-
----
-
-## Persistência de Dados
-
-Os dados são armazenados em `livros.txt` na raiz do projeto no formato:
+Resultado esperado:
 
 ```
-Titulo|Autor|Ano
-Harry Potter e a Pedra Filosofal|J.K Rowling|1997
-O Hobbit|Tolkien|1937
+🔍 Testando API...
+
+✅ Status: API Livraria online ✅
+✅ Listar: 30 livros retornados
+✅ Filtro por título: 2 livros encontrados
+✅ Adicionar: Livro adicionado com sucesso.
+✅ Remover: Livro removido com sucesso.
+
+✅ Todos os testes passaram!
 ```
-
----
-
-## Deploy na Azure (App Service)
-
-O deploy é feito automaticamente via GitHub Actions a cada push na branch `main`.
-
-Para configurar manualmente:
-
-```bash
-az login
-az webapp up --name livraria-api --runtime "PYTHON:3.11" --sku B1
-az webapp config set --name livraria-api --startup-file "gunicorn --bind=0.0.0.0:8000 app:app"
-az webapp config appsettings set --name livraria-api --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
-```
-
-API disponível em: `https://livraria-api.azurewebsites.net`
 
 ---
 
 ## Estrutura do Projeto
 
 ```
-livraria-api/
+deploy_Arquitetura-Cliente-Servidor-Back/
 ├── .github/
 │   └── workflows/
-│       └── azure-deploy.yml    # CI/CD para Azure App Service
+│       └── main_livraria-api.yml   # CI/CD para Azure App Service
 ├── entities/
-│   ├── livro.py                # Entidade pura
+│   ├── livro.py                    # Entidade pura
 │   └── livro_repository_interface.py  # Interface abstrata (DIP)
 ├── infra/
-│   └── txt_livro_repository.py # Persistência em TXT
+│   └── txt_livro_repository.py     # Persistência em TXT
 ├── interface/
-│   └── livro_controller.py     # Rotas da API
+│   └── livro_controller.py         # Rotas da API
 ├── use_cases/
-│   └── livro_use_cases.py      # Regras de negócio
+│   └── livro_use_cases.py          # Regras de negócio
 ├── .gitignore
 ├── README.md
-├── app.py                      # Inicialização do Flask
-├── livros.txt                  # Arquivo de dados
-└── requirements.txt            # Dependências
+├── app.py                          # Inicialização do Flask
+├── livros.txt                      # Arquivo de dados
+├── requirements.txt                # Dependências
+└── test_api.py                     # Testes da API em produção
+```
+
+---
+
+## Deploy (Azure App Service)
+
+O deploy é feito automaticamente via GitHub Actions a cada push na branch `main`.
+
+Startup command configurado:
+```
+gunicorn --bind=0.0.0.0:8000 app:app
 ```
